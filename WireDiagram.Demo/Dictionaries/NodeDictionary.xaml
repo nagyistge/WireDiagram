@@ -1,0 +1,288 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WireDiagram"
+                    xmlns:custom="clr-namespace:WireDiagram.CustomElements;assembly=WireDiagram.CustomElements"
+                    xmlns:controls="clr-namespace:WireDiagram.Controls;assembly=WireDiagram.Controls"
+                    xmlns:nodes="clr-namespace:WireDiagram.Nodes.Views;assembly=WireDiagram.Nodes">
+
+    <!-- control templates -->
+
+    <ControlTemplate x:Key="WireControlTemplateKey">
+        <custom:CustomElementLine X1="{Binding Path=StartPin.X, Mode=TwoWay}"
+                                  Y1="{Binding Path=StartPin.Y, Mode=TwoWay}"
+                                  X2="{Binding Path=EndPin.X, Mode=TwoWay}"
+                                  Y2="{Binding Path=EndPin.Y, Mode=TwoWay}"
+                                  StartAlignment="{Binding Path=StartPin.Alignment, Mode=TwoWay}"
+                                  EndAlignment="{Binding Path=EndPin.Alignment, Mode=TwoWay}"
+                                  Style="{StaticResource ResourceKey=CustomElementLineWireStyleKey}">
+        </custom:CustomElementLine>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="PinControlTemplateKey">
+        <custom:CustomElementPin DataContext="{Binding}" Style="{StaticResource ResourceKey=CustomElementPinStyleKey}"/>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="PinCanvasControlTemplateKey">
+        <ItemsControl ItemsSource="{Binding Path=Pins}">
+            <ItemsControl.ItemContainerStyle>
+                <Style TargetType="ContentPresenter">
+                    <Setter Property="Canvas.Left" Value="{Binding Path=OffsetX}"/>
+                    <Setter Property="Canvas.Top" Value="{Binding Path=OffsetY}"/>
+                    <Setter Property="Panel.ZIndex" Value="{Binding Path=Z}"/>
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <controls:PinCanvas Background="Transparent"></controls:PinCanvas>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <custom:CustomElementPin DataContext="{Binding}" Style="{StaticResource ResourceKey=CustomElementNodePinStyleKey}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="NodeControlTemplateKey">
+        <Grid Width="1.0cm" Height="1.0cm">
+            <custom:CustomElementRectangle Width="1.0cm" Height="1.0cm" Style="{StaticResource ResourceKey=CustomElementRectangleStyleKey}"/>
+            <Control Template="{StaticResource ResourceKey=PinCanvasControlTemplateKey}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="AndGateNodeControlTemplateKey">
+        <Grid Width="1.0cm" Height="1.0cm">
+            <nodes:AndGate/>
+            <Control Template="{StaticResource ResourceKey=PinCanvasControlTemplateKey}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="OrGateNodeControlTemplateKey">
+        <Grid Width="1.0cm" Height="1.0cm">
+            <nodes:OrGate/>
+            <Control Template="{StaticResource ResourceKey=PinCanvasControlTemplateKey}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="InverterNodeControlTemplateKey">
+        <Grid Width="1.0cm" Height="1.0cm">
+            <nodes:Inverter/>
+            <Control Template="{StaticResource ResourceKey=PinCanvasControlTemplateKey}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="PulseNodeControlTemplateKey">
+        <Grid Width="1.0cm" Height="1.0cm">
+            <nodes:Pulse/>
+            <Control Template="{StaticResource ResourceKey=PinCanvasControlTemplateKey}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="PulseGeneratorNodeControlTemplateKey">
+        <Grid Width="2.0cm" Height="1.0cm">
+            <nodes:PulseGenerator/>
+            <Control Template="{StaticResource ResourceKey=PinCanvasControlTemplateKey}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="TimerOffDelayNodeControlTemplateKey">
+        <Grid Width="2.0cm" Height="1.0cm">
+            <nodes:TimerOffDelay/>
+            <Control Template="{StaticResource ResourceKey=PinCanvasControlTemplateKey}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="TimerOnDelayNodeControlTemplateKey">
+        <Grid Width="2.0cm" Height="1.0cm">
+            <nodes:TimerOnDelay/>
+            <Control Template="{StaticResource ResourceKey=PinCanvasControlTemplateKey}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="MemoryResetPriorityNodeControlTemplateKey">
+        <Grid Width="2.0cm" Height="1.0cm">
+            <nodes:MemoryResetPriority/>
+            <Control Template="{StaticResource ResourceKey=PinCanvasControlTemplateKey}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="MemorySetPriorityNodeControlTemplateKey">
+        <Grid Width="2.0cm" Height="1.0cm">
+            <nodes:MemorySetPriority/>
+            <Control Template="{StaticResource ResourceKey=PinCanvasControlTemplateKey}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="LimiterNodeControlTemplateKey">
+        <Grid Width="1.0cm" Height="1.0cm">
+            <nodes:Limiter/>
+            <Control Template="{StaticResource ResourceKey=PinCanvasControlTemplateKey}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="LowerLimitNodeControlTemplateKey">
+        <Grid Width="1.0cm" Height="1.0cm">
+            <nodes:LowerLimit/>
+            <Control Template="{StaticResource ResourceKey=PinCanvasControlTemplateKey}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="HigherLimitNodeControlTemplateKey">
+        <Grid Width="1.0cm" Height="1.0cm">
+            <nodes:HigherLimit/>
+            <Control Template="{StaticResource ResourceKey=PinCanvasControlTemplateKey}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="DeadBandNodeControlTemplateKey">
+        <Grid Width="1.0cm" Height="1.0cm">
+            <nodes:DeadBand/>
+            <Control Template="{StaticResource ResourceKey=PinCanvasControlTemplateKey}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="MultiplierNodeControlTemplateKey">
+        <Grid Width="1.0cm" Height="1.0cm">
+            <nodes:Multiplier/>
+            <Control Template="{StaticResource ResourceKey=PinCanvasControlTemplateKey}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="PiControllerNodeControlTemplateKey">
+        <Grid Width="1.0cm" Height="1.5cm">
+            <nodes:PiController/>
+            <Control Template="{StaticResource ResourceKey=PinCanvasControlTemplateKey}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="PidControllerNodeControlTemplateKey">
+        <Grid Width="1.0cm" Height="1.5cm">
+            <nodes:PidController/>
+            <Control Template="{StaticResource ResourceKey=PinCanvasControlTemplateKey}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="SignalSwitchNodeControlTemplateKey">
+        <Grid Width="1.0cm" Height="1.0cm">
+            <nodes:SignalSwitch/>
+            <Control Template="{StaticResource ResourceKey=PinCanvasControlTemplateKey}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="SignalTransmitterNodeControlTemplateKey">
+        <Grid Width="1.0cm" Height="1.0cm">
+            <nodes:SignalTransmitter/>
+            <Control Template="{StaticResource ResourceKey=PinCanvasControlTemplateKey}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="MinimumSelectorNodeControlTemplateKey">
+        <Grid Width="2.0cm" Height="0.5cm">
+            <nodes:MinimumSelector/>
+            <Control Template="{StaticResource ResourceKey=PinCanvasControlTemplateKey}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="MaximumSelectorNodeControlTemplateKey">
+        <Grid Width="2.0cm" Height="0.5cm">
+            <nodes:MaximumSelector/>
+            <Control Template="{StaticResource ResourceKey=PinCanvasControlTemplateKey}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <!-- data templates -->
+
+    <DataTemplate x:Key="WireDataTemplateKey">
+        <controls:CustomControl Template="{StaticResource ResourceKey=WireControlTemplateKey}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="PinDataTemplateKey">
+        <controls:CustomThumb Template="{StaticResource ResourceKey=PinControlTemplateKey}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="NodeDataTemplateKey">
+        <controls:CustomThumb Template="{StaticResource ResourceKey=NodeControlTemplateKey}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="AndGateNodeDataTemplateKey">
+        <controls:CustomThumb Template="{StaticResource ResourceKey=AndGateNodeControlTemplateKey}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="OrGateNodeDataTemplateKey">
+        <controls:CustomThumb Template="{StaticResource ResourceKey=OrGateNodeControlTemplateKey}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="InverterNodeDataTemplateKey">
+        <controls:CustomThumb Template="{StaticResource ResourceKey=InverterNodeControlTemplateKey}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="PulseNodeDataTemplateKey">
+        <controls:CustomThumb Template="{StaticResource ResourceKey=PulseNodeControlTemplateKey}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="PulseGeneratorNodeDataTemplateKey">
+        <controls:CustomThumb Template="{StaticResource ResourceKey=PulseGeneratorNodeControlTemplateKey}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="TimerOffDelayNodeDataTemplateKey">
+        <controls:CustomThumb Template="{StaticResource ResourceKey=TimerOffDelayNodeControlTemplateKey}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="TimerOnDelayNodeDataTemplateKey">
+        <controls:CustomThumb Template="{StaticResource ResourceKey=TimerOnDelayNodeControlTemplateKey}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="MemoryResetPriorityNodeDataTemplateKey">
+        <controls:CustomThumb Template="{StaticResource ResourceKey=MemoryResetPriorityNodeControlTemplateKey}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="MemorySetPriorityNodeDataTemplateKey">
+        <controls:CustomThumb Template="{StaticResource ResourceKey=MemorySetPriorityNodeControlTemplateKey}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="LimiterNodeDataTemplateKey">
+        <controls:CustomThumb Template="{StaticResource ResourceKey=LimiterNodeControlTemplateKey}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="LowerLimitNodeDataTemplateKey">
+        <controls:CustomThumb Template="{StaticResource ResourceKey=LowerLimitNodeControlTemplateKey}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="HigherLimitNodeDataTemplateKey">
+        <controls:CustomThumb Template="{StaticResource ResourceKey=HigherLimitNodeControlTemplateKey}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="DeadBandNodeDataTemplateKey">
+        <controls:CustomThumb Template="{StaticResource ResourceKey=DeadBandNodeControlTemplateKey}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="MultiplierNodeDataTemplateKey">
+        <controls:CustomThumb Template="{StaticResource ResourceKey=MultiplierNodeControlTemplateKey}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="PiControllerNodeDataTemplateKey">
+        <controls:CustomThumb Template="{StaticResource ResourceKey=PiControllerNodeControlTemplateKey}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="PidControllerNodeDataTemplateKey">
+        <controls:CustomThumb Template="{StaticResource ResourceKey=PidControllerNodeControlTemplateKey}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="SignalSwitchNodeDataTemplateKey">
+        <controls:CustomThumb Template="{StaticResource ResourceKey=SignalSwitchNodeControlTemplateKey}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="SignalTransmitterNodeDataTemplateKey">
+        <controls:CustomThumb Template="{StaticResource ResourceKey=SignalTransmitterNodeControlTemplateKey}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="MinimumSelectorNodeDataTemplateKey">
+        <controls:CustomThumb Template="{StaticResource ResourceKey=MinimumSelectorNodeControlTemplateKey}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="MaximumSelectorNodeDataTemplateKey">
+        <controls:CustomThumb Template="{StaticResource ResourceKey=MaximumSelectorNodeControlTemplateKey}"/>
+    </DataTemplate>
+
+</ResourceDictionary>

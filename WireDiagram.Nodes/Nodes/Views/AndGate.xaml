@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="WireDiagram.Nodes.Views.AndGate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:custom="clr-namespace:WireDiagram.CustomElements;assembly=WireDiagram.CustomElements"
+             mc:Ignorable="d" 
+             Width="1.0cm" Height="1.0cm">
+
+    <Grid Style="{StaticResource ResourceKey=NodeGridStyleKey}">
+        <!-- frame -->
+        <custom:CustomElementRectangle Style="{StaticResource ResourceKey=CustomElementRectangleStyleKey}"/>
+        <!-- text -->
+        <custom:CustomElementText Text="&amp;" Style="{StaticResource ResourceKey=NodeCustomElementTextStyleKey}"/>
+    </Grid>
+
+</UserControl>
