@@ -192,13 +192,7 @@ namespace WireDiagram.Controls
             var adornerLayer = AdornerLayer.GetAdornerLayer(this);
             if (adornerLayer != null)
             {
-                this.adorner = new SelectionAdorner(this)
-                {
-                    //Stroke = this.Stroke,
-                    //StrokeThickness = this.StrokeThickness,
-                    //Fill = this.Fill
-                };
-
+                this.adorner = new SelectionAdorner(this);
                 adornerLayer.Add(this.adorner);
             }
         }
@@ -252,11 +246,18 @@ namespace WireDiagram.Controls
         {
             if (adorner != null)
             {
-                var expandedHitTestArea = new RectangleGeometry(new Rect(adorner.Start, adorner.End));
+                var expandedHitTestArea = new RectangleGeometry(
+                    new Rect(
+                        adorner.Start, 
+                        adorner.End));
 
                 ClearTempHitTestResults(true);
 
-                VisualTreeHelper.HitTest(this, null, new HitTestResultCallback(MyHitTestResultCallback), new GeometryHitTestParameters(expandedHitTestArea));
+                VisualTreeHelper.HitTest(
+                    this, 
+                    null, 
+                    new HitTestResultCallback(MyHitTestResultCallback), 
+                    new GeometryHitTestParameters(expandedHitTestArea));
                 if (hitResultsTempList.Count > 0)
                 {
                     ProcessHitTestResultsList();
@@ -303,73 +304,6 @@ namespace WireDiagram.Controls
                     }
                 }
             }
-
-            /*
-            var element = e.Source as FrameworkElement;
-            if (element.GetType() != typeof(DiagramCanvas) || !(this.DataContext is Diagram))
-            {
-                base.OnMouseLeftButtonDown(e);
-                return;
-            }
-
-            if (this.IsMouseCaptured == false)
-            {
-                var diagram = this.DataContext as Diagram;
-
-                Point p = e.GetPosition(this);
-                if (diagram.SnapToGrid)
-                {
-                    p = new Point()
-                    {
-                        X = SnapGrid.Snap(p.X, GridSize, GridOffsetLeft),
-                        Y = SnapGrid.Snap(p.Y, GridSize, GridOffsetTop)
-                    };
-                }
-
-                BackgroundWorker bw = new BackgroundWorker();
-
-                bw.DoWork += (_sender, _e) =>
-                {
-                    //Node node = new Node()
-                    AndGateNode node = new AndGateNode()
-                    {
-                        Id = Guid.NewGuid(),
-                        X = p.X,
-                        Y = p.Y,
-                        Z = 1,
-                    };
-
-                    var pinPoints = new PinPointList() 
-                    { 
-                        new PinPoint(0.0, 0.5), 
-                        new PinPoint(1.0, 0.5),
-                        new PinPoint(0.5, 0.0), 
-                        new PinPoint(0.5, 1.0) 
-                    };
-
-                    node.CreatePins(pinPoints);
-
-                    node.Update(diagram);
-
-                    _e.Result = node;
-                };
-
-                bw.RunWorkerCompleted += (_sender, _e) =>
-                {
-                    var node = _e.Result as Node;
-
-                    diagram.Items.Add(node);
-                };
-
-                bw.RunWorkerAsync();
-
-                e.Handled = true;
-            }
-            else
-            {
-                base.OnMouseLeftButtonDown(e);
-            }
-            */
 
             base.OnMouseLeftButtonDown(e);
         }
@@ -423,11 +357,6 @@ namespace WireDiagram.Controls
             }
             else
             {
-                //if (diagram.RemoveItem(element.DataContext as Item) == false)
-                //{
-                //    base.OnPreviewMouseRightButtonDown(e);
-                //}
-
                 base.OnPreviewMouseRightButtonDown(e);
             }
         }
@@ -577,9 +506,7 @@ namespace WireDiagram.Controls
 
         #region Background Grid
 
-        Pen pen = new Pen(new SolidColorBrush(Color.FromArgb(0x5F, 0x7F, 0x7F, 0x7F)), 1.0);
-
-
+        private Pen pen = new Pen(new SolidColorBrush(Color.FromArgb(0x5F, 0x7F, 0x7F, 0x7F)), 1.0);
 
         void DrawBackgroundGrid(DrawingContext dc)
         {
@@ -596,12 +523,6 @@ namespace WireDiagram.Controls
                 p1.Y = y;
                 p2.X = width - BackgroundGridMargin.Right;
                 p2.Y = y;
-
-                //GuidelineSet g = new GuidelineSet();
-                //g.GuidelinesX.Add(p1.X + penHalfThickness);
-                //g.GuidelinesX.Add(p2.X + penHalfThickness);
-                //g.GuidelinesY.Add(p1.Y + penHalfThickness);
-                //g.GuidelinesY.Add(p2.Y + penHalfThickness);
 
                 GuidelineSet g = new GuidelineSet(new double[] { 0.0, 0.0 }, new double[] { 0.0, 0.0 });
                 g.GuidelinesX[0] = p1.X + penHalfThickness;
@@ -621,12 +542,6 @@ namespace WireDiagram.Controls
                 p2.X = x;
                 p2.Y = height - BackgroundGridMargin.Bottom;
 
-                //GuidelineSet g = new GuidelineSet();
-                //g.GuidelinesX.Add(p1.X + penHalfThickness);
-                //g.GuidelinesX.Add(p2.X + penHalfThickness);
-                //g.GuidelinesY.Add(p1.Y + penHalfThickness);
-                //g.GuidelinesY.Add(p2.Y + penHalfThickness);
-
                 GuidelineSet g = new GuidelineSet(new double[] { 0.0, 0.0 }, new double[] { 0.0, 0.0 });
                 g.GuidelinesX[0] = p1.X + penHalfThickness;
                 g.GuidelinesX[1] = p2.X + penHalfThickness;
@@ -643,7 +558,6 @@ namespace WireDiagram.Controls
         {
             base.OnRender(dc);
 
-            // draw canvas grid backgroud
             if (IsBackgroundGridEnabled)
             {
                 DrawBackgroundGrid(dc);

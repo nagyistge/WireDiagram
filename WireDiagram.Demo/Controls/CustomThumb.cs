@@ -12,70 +12,45 @@ namespace WireDiagram.Controls
 {
     public class CustomThumb : Thumb
     {
-        //bool IsSelected = false;
-
         public CustomThumb()
         {
-            this.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(CustomThumb_PreviewMouseLeftButtonDown);
-            this.PreviewMouseLeftButtonUp += new MouseButtonEventHandler(CustomThumb_PreviewMouseLeftButtonUp);
-        }
-
-        void CustomThumb_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (this.DataContext is Node && Keyboard.Modifiers == ModifierKeys.Control)
+            this.PreviewMouseLeftButtonDown += (sender, e) =>
             {
-                var node = this.DataContext as Node;
-
-                if (node.IsSelected)
+                if (this.DataContext is Node && Keyboard.Modifiers == ModifierKeys.Control)
                 {
-                    if (node.Diagram.SelectedItems != null)
+                    var node = this.DataContext as Node;
+
+                    if (node.IsSelected)
                     {
-                        if (node.Diagram.SelectedItems.Contains(node))
+                        if (node.Diagram.SelectedItems != null)
                         {
-                            node.Diagram.SelectedItems.Remove(node);
-                            if (node.Diagram.SelectedItems.Count == 0)
+                            if (node.Diagram.SelectedItems.Contains(node))
                             {
-                                node.Diagram.SelectedItems = null;
+                                node.Diagram.SelectedItems.Remove(node);
+                                if (node.Diagram.SelectedItems.Count == 0)
+                                {
+                                    node.Diagram.SelectedItems = null;
+                                }
                             }
                         }
-                    }
 
-                    node.IsSelected = false;
-                }
-                else
-                {
-                    if (node.Diagram.SelectedItems == null)
+                        node.IsSelected = false;
+                    }
+                    else
                     {
-                        node.Diagram.SelectedItems = new ItemList();
-                    }
+                        if (node.Diagram.SelectedItems == null)
+                        {
+                            node.Diagram.SelectedItems = new ItemList();
+                        }
 
-                    if (!node.Diagram.SelectedItems.Contains(node))
-                    {
-                        node.IsSelected = true;
-                        node.Diagram.SelectedItems.Add(node);
+                        if (!node.Diagram.SelectedItems.Contains(node))
+                        {
+                            node.IsSelected = true;
+                            node.Diagram.SelectedItems.Add(node);
+                        }
                     }
                 }
-            }
-
-            //var item = this.DataContext as Item;
-            //if (item != null)
-            //{
-            //    IsSelected = item.IsSelected;
-            //    item.IsSelected = true;
-            //}
-            //e.Handled = false;
+            };
         }
-
-        void CustomThumb_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            //var item = this.DataContext as Item;
-            //if (item != null)
-            //{
-            //    item.IsSelected = IsSelected;
-            //}
-
-            //e.Handled = false;
-        }
-
     }
 }

@@ -7,7 +7,5 @@ using System.Windows.Input;
 
 namespace WireDiagram.Controls
 {
-    public class CustomControl : Control
-    {
-    }
+    public class CustomControl : Control { }
 }

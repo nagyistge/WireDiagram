@@ -14,9 +14,8 @@ namespace WireDiagram.Controls
 {
     public class PinCanvas : Canvas
     {
-        #region FindVisualParent
-
-        public static T FindVisualParent<T>(DependencyObject child) where T : DependencyObject
+        public static T FindVisualParent<T>(DependencyObject child) 
+            where T : DependencyObject
         {
             DependencyObject parentObject = VisualTreeHelper.GetParent(child);
             if (parentObject == null)
@@ -33,9 +32,7 @@ namespace WireDiagram.Controls
             }
         }
 
-        #endregion
-
-        protected override void OnPreviewMouseLeftButtonDown(System.Windows.Input.MouseButtonEventArgs e)
+        protected override void OnPreviewMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             if (!(this.DataContext is Node))
             {
@@ -46,25 +43,11 @@ namespace WireDiagram.Controls
             var diagram = (this.DataContext as Node).Diagram;
             var element = e.Source as FrameworkElement;
             var visualParent = FindVisualParent<DiagramCanvas>(this);
-
-            Point p = e.GetPosition(visualParent);
-            //if (diagram.SnapToGrid)
-            //{
-            //    p = SnapGrid.Snap(p, UnitConverter.CmToDip(1.0));
-            //}
+            var p = e.GetPosition(visualParent);
 
             if (element.DataContext is Pin)
             {
                 var pin = element.DataContext as Pin;
-
-                /*
-                if (pin.IsConnected)
-                {
-                    e.Handled = true;
-                    return;
-                }
-                */
-
                 if (visualParent.IsMouseCaptured)
                 {
                     if (visualParent.HaveStart)
@@ -93,8 +76,6 @@ namespace WireDiagram.Controls
                     };
 
                     wire.SetStartPin(pin);
-
-                    //pin.IsConnected = true;
 
                     Pin endPin = new Pin()
                     {
