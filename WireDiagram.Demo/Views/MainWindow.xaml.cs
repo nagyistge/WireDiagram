@@ -472,59 +472,6 @@ namespace WireDiagram
             (this.DataContext as Diagram).RemoveAllItems();
         }
 
-        private void MenuDiagramStats_Click(object sender, RoutedEventArgs e)
-        {
-            Diagram diagram = this.DataContext as Diagram;
-
-            int pins = 0;
-            foreach (var n in diagram.Nodes)
-                pins += n.Pins.Count();
-
-            MessageBox.Show(string.Format("Items: {0}\nNodes: {1} (Pins: {2})\nWires: {3}\nPins: {4}",
-                diagram.Items.Count(),
-                diagram.Nodes.Count(),
-                pins,
-                diagram.Wires.Count(),
-                diagram.Pins.Count()),
-                "Diagram Stats",
-                MessageBoxButton.OK,
-                MessageBoxImage.Information);
-        }
-
-        private void MenuDiagramTree_Click(object sender, RoutedEventArgs e)
-        {
-            TreeViewWindow window = new TreeViewWindow();
-            window.DataContext = this.DataContext as Diagram;
-            window.Owner = this;
-            window.Show();
-        }
-
-        private void MenuDiagramPreviewXml_Click(object sender, RoutedEventArgs e)
-        {
-            Diagram diagram = this.DataContext as Diagram;
-
-            try
-            {
-                StringBuilder sb = new StringBuilder();
-                using (System.IO.TextWriter writer = new System.IO.StringWriter(sb))
-                {
-                    XmlSerializer serializer = GetDiagramSerializer();
-
-                    serializer.Serialize(writer, diagram);
-
-                    XmlPreviewWindow window = new XmlPreviewWindow();
-                    window.Owner = this;
-                    window.Text = sb.ToString();
-
-                    window.ShowDialog();
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.Print(ex.Message);
-            }
-        }
-
         #endregion
 
         #region Drag & Drop

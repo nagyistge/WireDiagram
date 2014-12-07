@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WireDiagram</RootNamespace>
     <AssemblyName>WireDiagram.Demo</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -82,15 +82,199 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Views\TreeViewWindow.xaml.cs">
-      <DependentUpon>TreeViewWindow.xaml</DependentUpon>
+    <Compile Include="Controls\CustomControl.cs" />
+    <Compile Include="Controls\CustomThumb.cs" />
+    <Compile Include="Controls\DiagramCanvas.cs" />
+    <Compile Include="Controls\PinCanvas.cs" />
+    <Compile Include="Controls\SelectionAdorner.cs" />
+    <Compile Include="Controls\ZoomBorder.cs" />
+    <Compile Include="Core\Diagram.cs" />
+    <Compile Include="Core\Node.cs" />
+    <Compile Include="Core\Pin.cs" />
+    <Compile Include="Core\Wire.cs" />
+    <Compile Include="Core\ItemList.cs" />
+    <Compile Include="Core\PinList.cs" />
+    <Compile Include="Core\PinPointList.cs" />
+    <Compile Include="Core\IDiagram.cs" />
+    <Compile Include="Core\ILocation.cs" />
+    <Compile Include="Core\INode.cs" />
+    <Compile Include="Core\IPin.cs" />
+    <Compile Include="Core\IPinPoint.cs" />
+    <Compile Include="Core\ISelected.cs" />
+    <Compile Include="Core\Item.cs" />
+    <Compile Include="Core\IWire.cs" />
+    <Compile Include="Core\NotifyObject.cs" />
+    <Compile Include="Core\PinAlignment.cs" />
+    <Compile Include="Core\PinPoint.cs" />
+    <Compile Include="CustomElements\CustomElementLine.cs" />
+    <Compile Include="CustomElements\CustomElementPin.cs" />
+    <Compile Include="CustomElements\CustomElementRectangle.cs" />
+    <Compile Include="CustomElements\CustomElementText.cs" />
+    <Compile Include="Nodes\Model\AndGateNode.cs" />
+    <Compile Include="Nodes\Model\DeadBandNode.cs" />
+    <Compile Include="Nodes\Model\HigherLimitNode.cs" />
+    <Compile Include="Nodes\Model\InverterNode.cs" />
+    <Compile Include="Nodes\Model\LimiterNode.cs" />
+    <Compile Include="Nodes\Model\LowerLimitNode.cs" />
+    <Compile Include="Nodes\Model\MaximumSelectorNode.cs" />
+    <Compile Include="Nodes\Model\MemoryResetPriorityNode.cs" />
+    <Compile Include="Nodes\Model\MemorySetPriorityNode.cs" />
+    <Compile Include="Nodes\Model\MinimumSelectorNode.cs" />
+    <Compile Include="Nodes\Model\MultiplierNode.cs" />
+    <Compile Include="Nodes\Model\OrGateNode.cs" />
+    <Compile Include="Nodes\Model\PiControllerNode.cs" />
+    <Compile Include="Nodes\Model\PidControllerNode.cs" />
+    <Compile Include="Nodes\Model\PulseGeneratorNode.cs" />
+    <Compile Include="Nodes\Model\PulseNode.cs" />
+    <Compile Include="Nodes\Model\SignalSwitchNode.cs" />
+    <Compile Include="Nodes\Model\SignalTransmitterNode.cs" />
+    <Compile Include="Nodes\Model\TimerOffDelayNode.cs" />
+    <Compile Include="Nodes\Model\TimerOnDelayNode.cs" />
+    <Compile Include="Nodes\Views\AndGate.xaml.cs">
+      <DependentUpon>AndGate.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\XmlPreviewWindow.xaml.cs">
-      <DependentUpon>XmlPreviewWindow.xaml</DependentUpon>
+    <Compile Include="Nodes\Views\DeadBand.xaml.cs">
+      <DependentUpon>DeadBand.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Nodes\Views\HigherLimit.xaml.cs">
+      <DependentUpon>HigherLimit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nodes\Views\Inverter.xaml.cs">
+      <DependentUpon>Inverter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nodes\Views\Limiter.xaml.cs">
+      <DependentUpon>Limiter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nodes\Views\LowerLimit.xaml.cs">
+      <DependentUpon>LowerLimit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nodes\Views\MaximumSelector.xaml.cs">
+      <DependentUpon>MaximumSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nodes\Views\MemoryResetPriority.xaml.cs">
+      <DependentUpon>MemoryResetPriority.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nodes\Views\MemorySetPriority.xaml.cs">
+      <DependentUpon>MemorySetPriority.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nodes\Views\MinimumSelector.xaml.cs">
+      <DependentUpon>MinimumSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nodes\Views\Multiplier.xaml.cs">
+      <DependentUpon>Multiplier.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nodes\Views\OrGate.xaml.cs">
+      <DependentUpon>OrGate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nodes\Views\PiController.xaml.cs">
+      <DependentUpon>PiController.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nodes\Views\PidController.xaml.cs">
+      <DependentUpon>PidController.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nodes\Views\Pulse.xaml.cs">
+      <DependentUpon>Pulse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nodes\Views\PulseGenerator.xaml.cs">
+      <DependentUpon>PulseGenerator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nodes\Views\SignalSwitch.xaml.cs">
+      <DependentUpon>SignalSwitch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nodes\Views\SignalTransmitter.xaml.cs">
+      <DependentUpon>SignalTransmitter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nodes\Views\TimerOffDelay.xaml.cs">
+      <DependentUpon>TimerOffDelay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Nodes\Views\TimerOnDelay.xaml.cs">
+      <DependentUpon>TimerOnDelay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\SnapGrid.cs" />
+    <Compile Include="Utils\UnitConverter.cs" />
     <Page Include="Dictionaries\NodeDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Nodes\Views\AndGate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Nodes\Views\DeadBand.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Nodes\Views\HigherLimit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Nodes\Views\Inverter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Nodes\Views\Limiter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Nodes\Views\LowerLimit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Nodes\Views\MaximumSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Nodes\Views\MemoryResetPriority.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Nodes\Views\MemorySetPriority.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Nodes\Views\MinimumSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Nodes\Views\Multiplier.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Nodes\Views\OrGate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Nodes\Views\PiController.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Nodes\Views\PidController.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Nodes\Views\Pulse.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Nodes\Views\PulseGenerator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Nodes\Views\SignalSwitch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Nodes\Views\SignalTransmitter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Nodes\Views\TimerOffDelay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Nodes\Views\TimerOnDelay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -108,14 +292,6 @@
     <Page Include="Dictionaries\StyleDictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\TreeViewWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\XmlPreviewWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -164,28 +340,6 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WireDiagram.Controls\WireDiagram.Controls.csproj">
-      <Project>{8777D386-470B-4B10-9295-058171F2BD4C}</Project>
-      <Name>WireDiagram.Controls</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WireDiagram.Core\WireDiagram.Core.csproj">
-      <Project>{3A9EAA27-5AE6-443A-BE2D-32F171F24BCE}</Project>
-      <Name>WireDiagram.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WireDiagram.CustomElements\WireDiagram.CustomElements.csproj">
-      <Project>{4F20615A-092E-409F-AA9E-66C1C742A5F3}</Project>
-      <Name>WireDiagram.CustomElements</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WireDiagram.Nodes\WireDiagram.Nodes.csproj">
-      <Project>{1819E624-A47B-442B-8F47-997BA44F23CF}</Project>
-      <Name>WireDiagram.Nodes</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WireDiagram.Utils\WireDiagram.Utils.csproj">
-      <Project>{807C7D3A-A52D-4BE9-96A7-C794A8D823AF}</Project>
-      <Name>WireDiagram.Utils</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
