@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.ComponentModel;
-using System.Windows.Media;
 using System.Windows.Documents;
-
-using WireDiagram.Core.Model;
+using System.Windows.Input;
+using System.Windows.Media;
 using WireDiagram.Core.Items;
 using WireDiagram.Core.Lists;
+using WireDiagram.Core.Model;
 
 namespace WireDiagram.Controls
 {

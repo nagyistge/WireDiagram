@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
-
-using WireDiagram.Core.Model;
-using WireDiagram.Core.Lists;
 using WireDiagram.Core.Items;
+using WireDiagram.Core.Lists;
+using WireDiagram.Core.Model;
 
 namespace WireDiagram.Controls
 {
