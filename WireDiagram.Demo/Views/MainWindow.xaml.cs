@@ -1,9 +1,13 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -11,33 +15,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using Microsoft.Win32;
 using System.Xml.Serialization;
-using System.Windows.Controls.Primitives;
-
-using WireDiagram.Core.Model;
 using WireDiagram.Core.Items;
 using WireDiagram.Core.Lists;
+using WireDiagram.Core.Model;
 using WireDiagram.Nodes.Model;
 
 namespace WireDiagram
 {
     public partial class MainWindow : Window
     {
-        #region Properties
-
         private double GridSize = UnitConverter.CmToDip(0.5);
         private double GridSizeCreate = UnitConverter.CmToDip(1.0);
         private double GridOffsetLeft = UnitConverter.CmToDip(0.0);
         private double GridOffsetTop = UnitConverter.CmToDip(0.0);
-
         private Point dragStartPoint;
-
-        #endregion
-
-        #region MainWindow
 
         public MainWindow()
         {
@@ -85,10 +77,6 @@ namespace WireDiagram
             }
         }
 
-        #endregion
-
-        #region Initialize Diagram
-
         static Func<PinPointList, PinList> GetNodePins = (points) =>
         {
             PinList list = new PinList();
@@ -135,10 +123,7 @@ namespace WireDiagram
 
             bw.DoWork += (_sender, _e) =>
             {
-                #region New Diagram
-
-                // create diagram
-	            Diagram diagram = new Diagram()
+	            var diagram = new Diagram()
 	            {
 	                Id = Guid.NewGuid(),
 	                Width = UnitConverter.CmToDip(42.0),
@@ -148,76 +133,7 @@ namespace WireDiagram
                     ShowGrid = true,
                     PreviewSelection = true
 	            };
-
-                /*
-                var pinPoints = new PinPointList() 
-                { 
-                    new PinPoint(0.0, 0.5), 
-                    new PinPoint(1.0, 0.5),
-                    new PinPoint(0.5, 0.0), 
-                    new PinPoint(0.5, 1.0) 
-                };
-
-                Node[] nodes = new Node[4];
-                nodes[0] = GetNode(6.0, 2.0, pinPoints);
-                nodes[1] = GetNode(10.0, 2.0, pinPoints);
-                nodes[2] = GetNode(6.0, 6.0, pinPoints);
-                nodes[3] = GetNode(2.0, 2.0, pinPoints);
-
-                foreach(var node in nodes)
-                    diagram.Items.Add(node);
-
-                Wire[] wires = new Wire[3];
-                wires[0] = GetWire(0.0, 0.0, nodes[0].Pins[1], nodes[1].Pins[0]);
-                wires[1] = GetWire(0.0, 0.0, nodes[0].Pins[3], nodes[2].Pins[2]);
-                wires[2] = GetWire(0.0, 0.0, nodes[0].Pins[0], nodes[3].Pins[1]);
-
-                foreach (var wire in wires)
-                {
-                    diagram.Items.Add(wire);
-                }
-
-                // nodes
-
-                var andGateNode = new AndGateNode()
-                {
-                    Id = Guid.NewGuid(),
-                    X = UnitConverter.CmToDip(14.0),
-                    Y = UnitConverter.CmToDip(2.0),
-                    Z = 1
-                };
-                andGateNode.CreateDefaultPins();
-                diagram.Items.Add(andGateNode);
-
-                var orGateNode = new OrGateNode()
-                {
-                    Id = Guid.NewGuid(),
-                    X = UnitConverter.CmToDip(14.0),
-                    Y = UnitConverter.CmToDip(3.5),
-                    Z = 1
-                };
-                orGateNode.CreateDefaultPins();
-                diagram.Items.Add(orGateNode);
-                */
-
-                /*
-                Pin pin = new Pin()
-                {
-                    Id = Guid.Empty,
-                    ParentId = Guid.Empty,
-                    OffsetX = 0.0,
-                    OffsetY = 0.0,
-                    X = UnitConverter.CmToDip(12.0),
-                    Y = UnitConverter.CmToDip(2.5),
-                    Z= 1
-                };
-
-                diagram.Items.Add(pin);
-                */
-
                 diagram.Update(diagram);
-
-                #endregion
 
                 _e.Result = diagram;
             };
@@ -226,17 +142,12 @@ namespace WireDiagram
             {
             	if(_e.Result != null)
             	{
-                	// diagram => DataContext
                 	this.DataContext = _e.Result as Diagram;
             	}
             };
 
             bw.RunWorkerAsync();
         }
-
-        #endregion
-
-        #region Serialize/Deserialize Diagram
 
         XmlSerializer GetDiagramSerializer()
         {
@@ -335,10 +246,6 @@ namespace WireDiagram
             }
         }
 
-        #endregion
-
-        #region Thumb Events
-
         private void Thumb_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
         {
 			var node = (sender as FrameworkElement).DataContext as Node;
@@ -395,10 +302,6 @@ namespace WireDiagram
                 node.Y += y;
             }
         }
-
-        #endregion
-
-        #region Menu Events
 
         private void MenuFileOpen_Click(object sender, RoutedEventArgs e)
         {
@@ -471,10 +374,6 @@ namespace WireDiagram
         {
             (this.DataContext as Diagram).RemoveAllItems();
         }
-
-        #endregion
-
-        #region Drag & Drop
 
         public static T FindVisualParent<T>(DependencyObject child) where T : DependencyObject
         {
@@ -876,7 +775,5 @@ namespace WireDiagram
                     break;
             }
         }
-
-        #endregion
     }
 }
