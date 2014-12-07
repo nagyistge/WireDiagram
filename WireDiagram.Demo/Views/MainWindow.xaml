@@ -4,7 +4,6 @@
         xmlns:local="clr-namespace:WireDiagram"
         xmlns:custom="clr-namespace:WireDiagram.CustomElements"
         xmlns:controls="clr-namespace:WireDiagram.Controls"
-        xmlns:nodes="clr-namespace:WireDiagram.Nodes.Views"
         Title="WireDiagram.Demo" 
         Height="600" Width="900" 
         Background="WhiteSmoke"
@@ -75,26 +74,26 @@
                 </Style>
             </ListBox.Resources>
             <ListBox.Items>
-                <nodes:OrGate ToolTip="Or Gate"/>
-                <nodes:AndGate ToolTip="And Gate"/>
-                <nodes:Inverter ToolTip="Inverter"/>
-                <nodes:Pulse ToolTip="Pulse"/>
-                <nodes:PulseGenerator ToolTip="Pulse Generator"/>
-                <nodes:TimerOffDelay ToolTip="Timer OFF Delay"/>
-                <nodes:TimerOnDelay ToolTip="Timer ON Delay"/>
-                <nodes:MemoryResetPriority ToolTip="Memory with Reset Priority"/>
-                <nodes:MemorySetPriority ToolTip="Memory with Set Priority"/>
-                <nodes:Limiter ToolTip="Limiter"/>
-                <nodes:LowerLimit ToolTip="Lower Limit"/>
-                <nodes:HigherLimit ToolTip="Higher Limit"/>
-                <nodes:DeadBand ToolTip="DeadBand"/>
-                <nodes:Multiplier ToolTip="Multiplier"/>
-                <nodes:PiController ToolTip="PI Controller"/>
-                <nodes:PidController ToolTip="PID Controller"/>
-                <nodes:SignalSwitch ToolTip="Signal Switch"/>
-                <nodes:SignalTransmitter ToolTip="Signal Transmitter"/>
-                <nodes:MinimumSelector ToolTip="Minimum Selector"/>
-                <nodes:MaximumSelector ToolTip="Maximum Selector"/>
+                <Control Template="{StaticResource ResourceKey=OrGateControlTemplateKey}" Tag="OrGate" ToolTip="Or Gate"/>
+                <Control Template="{StaticResource ResourceKey=AndGateControlTemplateKey}" Tag="AndGate" ToolTip="And Gate"/>
+                <Control Template="{StaticResource ResourceKey=InverterControlTemplateKey}" Tag="Inverter" ToolTip="Inverter"/>
+                <Control Template="{StaticResource ResourceKey=PulseControlTemplateKey}" Tag="Pulse" ToolTip="Pulse"/>
+                <Control Template="{StaticResource ResourceKey=PulseGeneratorControlTemplateKey}" Tag="PulseGenerator" ToolTip="Pulse Generator"/>
+                <Control Template="{StaticResource ResourceKey=TimerOffDelayControlTemplateKey}" Tag="TimerOffDelay" ToolTip="Timer OFF Delay"/>
+                <Control Template="{StaticResource ResourceKey=TimerOnDelayControlTemplateKey}" Tag="TimerOnDelay" ToolTip="Timer ON Delay"/>
+                <Control Template="{StaticResource ResourceKey=MemoryResetPriorityControlTemplateKey}" Tag="MemoryResetPriority" ToolTip="Memory with Reset Priority"/>
+                <Control Template="{StaticResource ResourceKey=MemorySetPriorityControlTemplateKey}" Tag="MemorySetPriority" ToolTip="Memory with Set Priority"/>
+                <Control Template="{StaticResource ResourceKey=LimiterControlTemplateKey}" Tag="Limiter" ToolTip="Limiter"/>
+                <Control Template="{StaticResource ResourceKey=LowerLimitControlTemplateKey}" Tag="LowerLimit" ToolTip="Lower Limit"/>
+                <Control Template="{StaticResource ResourceKey=HigherLimitControlTemplateKey}" Tag="HigherLimit" ToolTip="Higher Limit"/>
+                <Control Template="{StaticResource ResourceKey=DeadBandControlTemplateKey}" Tag="DeadBand" ToolTip="DeadBand"/>
+                <Control Template="{StaticResource ResourceKey=MultiplierControlTemplateKey}" Tag="Multiplier" ToolTip="Multiplier"/>
+                <Control Template="{StaticResource ResourceKey=PiControllerControlTemplateKey}" Tag="PiController" ToolTip="PI Controller"/>
+                <Control Template="{StaticResource ResourceKey=PidControllerControlTemplateKey}" Tag="PidController" ToolTip="PID Controller"/>
+                <Control Template="{StaticResource ResourceKey=SignalSwitchControlTemplateKey}" Tag="SignalSwitch" ToolTip="Signal Switch"/>
+                <Control Template="{StaticResource ResourceKey=SignalTransmitterControlTemplateKey}" Tag="SignalTransmitter" ToolTip="Signal Transmitter"/>
+                <Control Template="{StaticResource ResourceKey=MinimumSelectorControlTemplateKey}" Tag="MinimumSelector" ToolTip="Minimum Selector"/>
+                <Control Template="{StaticResource ResourceKey=MaximumSelectorControlTemplateKey}" Tag="MaximumSelector" ToolTip="Maximum Selector"/>
             </ListBox.Items>
         </ListBox>
         <Border Grid.Row="1" Grid.Column="1" Margin="0,5,5,5" ClipToBounds="True" BorderBrush="{x:Null}" BorderThickness="0">

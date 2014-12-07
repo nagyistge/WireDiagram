@@ -404,10 +404,10 @@ namespace WireDiagram
             if (e.LeftButton == MouseButtonState.Pressed && (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance || Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
             {
                 var panel = sender as StackPanel;
-                UserControl control = FindVisualParent<UserControl>((DependencyObject)e.OriginalSource);
+                Control control = FindVisualParent<Control>((DependencyObject)e.OriginalSource);
                 if (control != null)
                 {
-                    string type = control.GetType().Name;
+                    string type = control.Tag as string;
                     DataObject dragData = new DataObject("ControlTypeFormat", type);
                     DragDrop.DoDragDrop(control, dragData, DragDropEffects.Move);
                 }

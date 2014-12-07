@@ -110,171 +110,31 @@
     <Compile Include="CustomElements\CustomElementPin.cs" />
     <Compile Include="CustomElements\CustomElementRectangle.cs" />
     <Compile Include="CustomElements\CustomElementText.cs" />
-    <Compile Include="Nodes\Model\AndGateNode.cs" />
-    <Compile Include="Nodes\Model\DeadBandNode.cs" />
-    <Compile Include="Nodes\Model\HigherLimitNode.cs" />
-    <Compile Include="Nodes\Model\InverterNode.cs" />
-    <Compile Include="Nodes\Model\LimiterNode.cs" />
-    <Compile Include="Nodes\Model\LowerLimitNode.cs" />
-    <Compile Include="Nodes\Model\MaximumSelectorNode.cs" />
-    <Compile Include="Nodes\Model\MemoryResetPriorityNode.cs" />
-    <Compile Include="Nodes\Model\MemorySetPriorityNode.cs" />
-    <Compile Include="Nodes\Model\MinimumSelectorNode.cs" />
-    <Compile Include="Nodes\Model\MultiplierNode.cs" />
-    <Compile Include="Nodes\Model\OrGateNode.cs" />
-    <Compile Include="Nodes\Model\PiControllerNode.cs" />
-    <Compile Include="Nodes\Model\PidControllerNode.cs" />
-    <Compile Include="Nodes\Model\PulseGeneratorNode.cs" />
-    <Compile Include="Nodes\Model\PulseNode.cs" />
-    <Compile Include="Nodes\Model\SignalSwitchNode.cs" />
-    <Compile Include="Nodes\Model\SignalTransmitterNode.cs" />
-    <Compile Include="Nodes\Model\TimerOffDelayNode.cs" />
-    <Compile Include="Nodes\Model\TimerOnDelayNode.cs" />
-    <Compile Include="Nodes\Views\AndGate.xaml.cs">
-      <DependentUpon>AndGate.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Nodes\Views\DeadBand.xaml.cs">
-      <DependentUpon>DeadBand.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Nodes\Views\HigherLimit.xaml.cs">
-      <DependentUpon>HigherLimit.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Nodes\Views\Inverter.xaml.cs">
-      <DependentUpon>Inverter.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Nodes\Views\Limiter.xaml.cs">
-      <DependentUpon>Limiter.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Nodes\Views\LowerLimit.xaml.cs">
-      <DependentUpon>LowerLimit.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Nodes\Views\MaximumSelector.xaml.cs">
-      <DependentUpon>MaximumSelector.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Nodes\Views\MemoryResetPriority.xaml.cs">
-      <DependentUpon>MemoryResetPriority.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Nodes\Views\MemorySetPriority.xaml.cs">
-      <DependentUpon>MemorySetPriority.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Nodes\Views\MinimumSelector.xaml.cs">
-      <DependentUpon>MinimumSelector.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Nodes\Views\Multiplier.xaml.cs">
-      <DependentUpon>Multiplier.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Nodes\Views\OrGate.xaml.cs">
-      <DependentUpon>OrGate.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Nodes\Views\PiController.xaml.cs">
-      <DependentUpon>PiController.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Nodes\Views\PidController.xaml.cs">
-      <DependentUpon>PidController.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Nodes\Views\Pulse.xaml.cs">
-      <DependentUpon>Pulse.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Nodes\Views\PulseGenerator.xaml.cs">
-      <DependentUpon>PulseGenerator.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Nodes\Views\SignalSwitch.xaml.cs">
-      <DependentUpon>SignalSwitch.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Nodes\Views\SignalTransmitter.xaml.cs">
-      <DependentUpon>SignalTransmitter.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Nodes\Views\TimerOffDelay.xaml.cs">
-      <DependentUpon>TimerOffDelay.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Nodes\Views\TimerOnDelay.xaml.cs">
-      <DependentUpon>TimerOnDelay.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Nodes\AndGateNode.cs" />
+    <Compile Include="Nodes\DeadBandNode.cs" />
+    <Compile Include="Nodes\HigherLimitNode.cs" />
+    <Compile Include="Nodes\InverterNode.cs" />
+    <Compile Include="Nodes\LimiterNode.cs" />
+    <Compile Include="Nodes\LowerLimitNode.cs" />
+    <Compile Include="Nodes\MaximumSelectorNode.cs" />
+    <Compile Include="Nodes\MemoryResetPriorityNode.cs" />
+    <Compile Include="Nodes\MemorySetPriorityNode.cs" />
+    <Compile Include="Nodes\MinimumSelectorNode.cs" />
+    <Compile Include="Nodes\MultiplierNode.cs" />
+    <Compile Include="Nodes\OrGateNode.cs" />
+    <Compile Include="Nodes\PiControllerNode.cs" />
+    <Compile Include="Nodes\PidControllerNode.cs" />
+    <Compile Include="Nodes\PulseGeneratorNode.cs" />
+    <Compile Include="Nodes\PulseNode.cs" />
+    <Compile Include="Nodes\SignalSwitchNode.cs" />
+    <Compile Include="Nodes\SignalTransmitterNode.cs" />
+    <Compile Include="Nodes\TimerOffDelayNode.cs" />
+    <Compile Include="Nodes\TimerOnDelayNode.cs" />
     <Compile Include="Utils\SnapGrid.cs" />
     <Compile Include="Utils\UnitConverter.cs" />
     <Page Include="Dictionaries\NodeDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Nodes\Views\AndGate.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Nodes\Views\DeadBand.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Nodes\Views\HigherLimit.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Nodes\Views\Inverter.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Nodes\Views\Limiter.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Nodes\Views\LowerLimit.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Nodes\Views\MaximumSelector.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Nodes\Views\MemoryResetPriority.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Nodes\Views\MemorySetPriority.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Nodes\Views\MinimumSelector.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Nodes\Views\Multiplier.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Nodes\Views\OrGate.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Nodes\Views\PiController.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Nodes\Views\PidController.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Nodes\Views\Pulse.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Nodes\Views\PulseGenerator.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Nodes\Views\SignalSwitch.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Nodes\Views\SignalTransmitter.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Nodes\Views\TimerOffDelay.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Nodes\Views\TimerOnDelay.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -289,10 +149,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Dictionaries\StyleDictionary.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
